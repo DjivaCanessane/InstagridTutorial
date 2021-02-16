@@ -8,28 +8,47 @@
 import SwiftUI
 
 struct LayoutButtons: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
-        HStack {
-            Button(action: {}) {
-                Image("Layout 1")
-                    .resizable()
-                    .frame(width: 85, height: 85, alignment: .center)
-            }
-            
-            Button(action: {}) {
-                Image("Layout 2")
-                    .resizable()
-                    .frame(width: 85, height: 85, alignment: .center)
-            }
-            
-            Button(action: {}) {
-                Image("Layout 3")
-                    .resizable()
-                    .frame(width: 85, height: 85, alignment: .center)
-            }
+        let layoutButtonOne = Button(action: {}) {
+            Image("Layout 1")
+                .resizable()
+                .frame(width: 85, height: 85, alignment: .center)
         }
-        .padding(.bottom)
-        .padding(.horizontal)
+
+        let layoutButtonTwo = Button(action: {}) {
+            Image("Layout 2")
+                .resizable()
+                .frame(width: 85, height: 85, alignment: .center)
+        }
+
+        let layoutButtonThree = Button(action: {}) {
+            Image("Layout 3")
+                .resizable()
+                .frame(width: 85, height: 85, alignment: .center)
+        }
+        // Portrait mode
+        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+            HStack {
+                layoutButtonOne
+                layoutButtonTwo
+                layoutButtonThree
+            }
+            .padding(.bottom)
+            .padding(.horizontal)
+        // Landscape mode
+        } else {
+            VStack {
+                layoutButtonOne
+                layoutButtonTwo
+                layoutButtonThree
+            }
+            .padding(.vertical)
+            .padding(.horizontal)
+        }
+        
         
     }
 }

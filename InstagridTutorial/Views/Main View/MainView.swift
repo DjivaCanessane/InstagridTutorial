@@ -8,25 +8,43 @@
 import SwiftUI
 
 struct MainView: View {
-    // On instancie les 3 sous vues que nous avons créées
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     let headerView = HeaderView()
     let gridLayout = GridLayout()
     let layoutButtons = LayoutButtons()
 
     var body: some View {
-        // On crée une ZStack pour donner une couleur de fond et afficher les sous vues
+
         ZStack {
             Color.yellow
                 .edgesIgnoringSafeArea(.all)
-            // GeometryReader permet de récupérer les dimensions de l'appareil et permet donc de bien définir la taille de la vue
-            GeometryReader { geometry in
-                VStack {
-                    headerView
-                    gridLayout
-                    layoutButtons
-                }.frame(width: geometry.size.width,
-                        height: geometry.size.height,
-                        alignment: .center)
+            // Portrait mode
+            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+                GeometryReader { geometry in
+                    VStack {
+                        headerView
+                        gridLayout
+                        layoutButtons
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                }
+            // Landscape mode
+            } else {
+                GeometryReader { geometry in
+                    HStack {
+                        headerView
+                        VStack {
+                            Text("Instagrid")
+                                .font(Font.custom("ThirstySoftRegular", size: 30))
+                                .padding(.top, 8)
+                            gridLayout
+                        }
+                        layoutButtons
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                }
             }
         }
     }
