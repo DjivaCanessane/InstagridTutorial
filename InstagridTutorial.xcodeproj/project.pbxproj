@@ -8,18 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		18DF4A7225DC181200820C12 /* InstagridTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A7125DC181200820C12 /* InstagridTutorialApp.swift */; };
-		18DF4A7425DC181200820C12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A7325DC181200820C12 /* ContentView.swift */; };
+		18DF4A7425DC181200820C12 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A7325DC181200820C12 /* MainView.swift */; };
 		18DF4A7625DC181400820C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18DF4A7525DC181400820C12 /* Assets.xcassets */; };
 		18DF4A7925DC181400820C12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18DF4A7825DC181400820C12 /* Preview Assets.xcassets */; };
+		18DF4A8325DC18E800820C12 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18DF4A8125DC18E800820C12 /* ThirstySoftRegular.otf */; };
+		18DF4A8425DC18E800820C12 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18DF4A8225DC18E800820C12 /* Delm-Medium.otf */; };
+		18DF4A9225DC3B2E00820C12 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9125DC3B2E00820C12 /* GridLayout.swift */; };
+		18DF4A9525DC3B4100820C12 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9425DC3B4100820C12 /* HeaderView.swift */; };
+		18DF4A9825DC3B5E00820C12 /* LayoutButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9725DC3B5E00820C12 /* LayoutButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18DF4A6E25DC181200820C12 /* InstagridTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagridTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18DF4A7125DC181200820C12 /* InstagridTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagridTutorialApp.swift; sourceTree = "<group>"; };
-		18DF4A7325DC181200820C12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		18DF4A7325DC181200820C12 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		18DF4A7525DC181400820C12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18DF4A7825DC181400820C12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18DF4A7A25DC181400820C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18DF4A8125DC18E800820C12 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		18DF4A8225DC18E800820C12 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		18DF4A9125DC3B2E00820C12 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		18DF4A9425DC3B4100820C12 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		18DF4A9725DC3B5E00820C12 /* LayoutButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +62,10 @@
 		18DF4A7025DC181200820C12 /* InstagridTutorial */ = {
 			isa = PBXGroup;
 			children = (
-				18DF4A7125DC181200820C12 /* InstagridTutorialApp.swift */,
-				18DF4A7325DC181200820C12 /* ContentView.swift */,
-				18DF4A7525DC181400820C12 /* Assets.xcassets */,
-				18DF4A7A25DC181400820C12 /* Info.plist */,
+				18DF4A8D25DC3A8900820C12 /* Views */,
+				18DF4A8C25DC3A4A00820C12 /* Supporting Files */,
 				18DF4A7725DC181400820C12 /* Preview Content */,
+				18DF4A7A25DC181400820C12 /* Info.plist */,
 			);
 			path = InstagridTutorial;
 			sourceTree = "<group>";
@@ -67,6 +76,44 @@
 				18DF4A7825DC181400820C12 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18DF4A8C25DC3A4A00820C12 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				18DF4A7125DC181200820C12 /* InstagridTutorialApp.swift */,
+				18DF4A7525DC181400820C12 /* Assets.xcassets */,
+				18DF4A8225DC18E800820C12 /* Delm-Medium.otf */,
+				18DF4A8125DC18E800820C12 /* ThirstySoftRegular.otf */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18DF4A8D25DC3A8900820C12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18DF4A8E25DC3A9600820C12 /* Main View */,
+				18DF4A8F25DC3A9E00820C12 /* Supporting Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18DF4A8E25DC3A9600820C12 /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				18DF4A7325DC181200820C12 /* MainView.swift */,
+			);
+			path = "Main View";
+			sourceTree = "<group>";
+		};
+		18DF4A8F25DC3A9E00820C12 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				18DF4A9125DC3B2E00820C12 /* GridLayout.swift */,
+				18DF4A9425DC3B4100820C12 /* HeaderView.swift */,
+				18DF4A9725DC3B5E00820C12 /* LayoutButtons.swift */,
+			);
+			path = "Supporting Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +173,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DF4A8325DC18E800820C12 /* ThirstySoftRegular.otf in Resources */,
 				18DF4A7925DC181400820C12 /* Preview Assets.xcassets in Resources */,
+				18DF4A8425DC18E800820C12 /* Delm-Medium.otf in Resources */,
 				18DF4A7625DC181400820C12 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +187,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18DF4A7425DC181200820C12 /* ContentView.swift in Sources */,
+				18DF4A9225DC3B2E00820C12 /* GridLayout.swift in Sources */,
+				18DF4A9825DC3B5E00820C12 /* LayoutButtons.swift in Sources */,
+				18DF4A7425DC181200820C12 /* MainView.swift in Sources */,
 				18DF4A7225DC181200820C12 /* InstagridTutorialApp.swift in Sources */,
+				18DF4A9525DC3B4100820C12 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
