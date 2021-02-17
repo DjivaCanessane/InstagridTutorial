@@ -16,13 +16,15 @@ struct MainView: View {
     @State var activeSheet: ActiveSheet?
     @State var verticalOffset: CGFloat = CGFloat.zero
     @State var horizontalOffset: CGFloat = CGFloat.zero
+    @State var gridImage: UIImage? = nil
+    @State var rect: CGRect = .zero
 
     let headerView = HeaderView()
     let layoutButtons = LayoutButtons()
 
     var body: some View {
         // On donne un offset au gridLayout pour qu'il change de position lors du swipe
-        let gridLayout = GridLayout(activeSheet: $activeSheet)
+        let gridLayout = GridLayout(activeSheet: $activeSheet, rect: $rect)
             .offset(x: horizontalOffset, y: verticalOffset)
         ZStack {
             Color.yellow
@@ -64,10 +66,21 @@ struct MainView: View {
                         self.activeSheet = nil
                     }
                 )
+            case .share:
+                // On partage le gridImage qui a été générée dans le .gesture
+                ShareView(activityItems: [self.gridImage as Any], callback: {_,_,_,_ in
+                    // On reset le offset du gridLayout
+                    withAnimation {
+                        self.verticalOffset = 0
+                        self.horizontalOffset = 0
+                    }
+                })
             }
         }
         .gesture(DragGesture(minimumDistance: 3, coordinateSpace: .global)
                     .onEnded({ (value) in
+                        // On convertit le rectangle fourni gridLayout pour le RectGetter, en UIImage
+                        gridImage = UIApplication.shared.windows[0].rootViewController?.view.asImage(rect: self.rect)
                         // up swipe
                         if value.translation.height < 0 && isPortraitMode() {
                             // withAnimation créera automatiqument une animation pour la translation
@@ -82,6 +95,7 @@ struct MainView: View {
                                 self.horizontalOffset = -UIScreen.main.bounds.size.width
                             }
                         }
+                        activeSheet = .share
                     })
         )
     }
@@ -92,7 +106,7 @@ struct MainView: View {
 }
 
 enum ActiveSheet: Identifiable {
-    case pickImage
+    case pickImage, share
     
     var id: Int {
         hashValue

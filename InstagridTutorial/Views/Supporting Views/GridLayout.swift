@@ -12,6 +12,7 @@ struct GridLayout: View {
     @EnvironmentObject var imagePickerViewModel: ImagePickerViewModel
     
     @Binding var activeSheet: ActiveSheet?
+    @Binding var rect: CGRect
 
     var defaultImage: some View {
         ZStack {
@@ -54,6 +55,8 @@ struct GridLayout: View {
         .background(Color.blue)
         .aspectRatio(1, contentMode: .fit)
         .padding(8)
+        // on ajoute le RectGetter en arriere plan, pour obtenir les dimensions du GridLayout
+        .background(RectGetter(rect: $rect))
         
     }
     
