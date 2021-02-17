@@ -16,6 +16,7 @@
 		18DF4A9225DC3B2E00820C12 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9125DC3B2E00820C12 /* GridLayout.swift */; };
 		18DF4A9525DC3B4100820C12 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9425DC3B4100820C12 /* HeaderView.swift */; };
 		18DF4A9825DC3B5E00820C12 /* LayoutButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9725DC3B5E00820C12 /* LayoutButtons.swift */; };
+		18DF4A9C25DC8D2D00820C12 /* LayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF4A9B25DC8D2D00820C12 /* LayoutViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		18DF4A9125DC3B2E00820C12 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		18DF4A9425DC3B4100820C12 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		18DF4A9725DC3B5E00820C12 /* LayoutButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutButtons.swift; sourceTree = "<group>"; };
+		18DF4A9B25DC8D2D00820C12 /* LayoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		18DF4A7025DC181200820C12 /* InstagridTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				18DF4A9A25DC8D1800820C12 /* View Model */,
 				18DF4A8D25DC3A8900820C12 /* Views */,
 				18DF4A8C25DC3A4A00820C12 /* Supporting Files */,
 				18DF4A7725DC181400820C12 /* Preview Content */,
@@ -114,6 +117,14 @@
 				18DF4A9725DC3B5E00820C12 /* LayoutButtons.swift */,
 			);
 			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		18DF4A9A25DC8D1800820C12 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				18DF4A9B25DC8D2D00820C12 /* LayoutViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DF4A9C25DC8D2D00820C12 /* LayoutViewModel.swift in Sources */,
 				18DF4A9225DC3B2E00820C12 /* GridLayout.swift in Sources */,
 				18DF4A9825DC3B5E00820C12 /* LayoutButtons.swift in Sources */,
 				18DF4A7425DC181200820C12 /* MainView.swift in Sources */,

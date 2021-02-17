@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    // Il n'est pas nécessaire de récupérer le LayoutViewModel dans cette vue, crée et donné au InstagridTutorialApp
+    // pour que les sous vues puissent y accèder
+
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
