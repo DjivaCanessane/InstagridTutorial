@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var imagePickerViewModel: ImagePickerViewModel
+    // On récupère layoutviewModel afin de vérifier la présence ou non d'images sur le gridLayout
+    @EnvironmentObject var layoutViewModel: LayoutViewModel
 
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -18,6 +20,7 @@ struct MainView: View {
     @State var horizontalOffset: CGFloat = CGFloat.zero
     @State var gridImage: UIImage? = nil
     @State var rect: CGRect = .zero
+    @State var isGridLayoutEmpty: Bool = false
 
     let headerView = HeaderView()
     let layoutButtons = LayoutButtons()
@@ -77,6 +80,15 @@ struct MainView: View {
                 })
             }
         }
+        // Affiche un message d'erreur via une Alert
+        .alert(isPresented: $isGridLayoutEmpty) {
+            Alert(title: Text("No images"), message: Text("Please select some images before sharing."), dismissButton: .default(Text("OK"), action: {
+                withAnimation {
+                    self.verticalOffset = 0
+                    self.horizontalOffset = 0
+                }
+            }))
+        }
         .gesture(DragGesture(minimumDistance: 3, coordinateSpace: .global)
                     .onEnded({ (value) in
                         // On convertit le rectangle fourni gridLayout pour le RectGetter, en UIImage
@@ -95,7 +107,12 @@ struct MainView: View {
                                 self.horizontalOffset = -UIScreen.main.bounds.size.width
                             }
                         }
-                        activeSheet = .share
+                        // On vérifie la présence d'au moins une image dans le gridLayout
+                        if isShowingAtLeastOneImage() {
+                            activeSheet = .share
+                        } else {
+                            isGridLayoutEmpty = true
+                        }
                     })
         )
     }
