@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct InstagridTutorialApp: App {
     var layoutViewModel = LayoutViewModel()
+    // Comme pour le layoutViewModel, on crée ici imagePickerViewModel pour que ce soit une variable d'environnement
+    var imagePickerViewModel = ImagePickerViewModel()
 
     var body: some Scene {
         WindowGroup {
             MainView()
-                // On transmet le layoutViewModel non seulement au MainView mais aussi à tous ses sous vues
                 .environmentObject(layoutViewModel)
+                .environmentObject(imagePickerViewModel)
         }
     }
 }

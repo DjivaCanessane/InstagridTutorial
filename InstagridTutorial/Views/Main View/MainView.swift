@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
-    // Il n'est pas nécessaire de récupérer le LayoutViewModel dans cette vue, crée et donné au InstagridTutorialApp
-    // pour que les sous vues puissent y accèder
+    @EnvironmentObject var imagePickerViewModel: ImagePickerViewModel
 
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
+    @State var activeSheet: ActiveSheet?
+
     let headerView = HeaderView()
-    let gridLayout = GridLayout()
     let layoutButtons = LayoutButtons()
 
     var body: some View {
-
+        let gridLayout = GridLayout(activeSheet: $activeSheet)
+        
         ZStack {
             Color.yellow
                 .edgesIgnoringSafeArea(.all)
@@ -50,6 +51,26 @@ struct MainView: View {
                 }
             }
         }
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .pickImage:
+                ImagePickerView(
+                    sourceType: imagePickerViewModel.sourceType,
+                    completionHandler: { image in
+                        imagePickerViewModel.didSelectImage(image)
+                        self.activeSheet = nil
+                    }
+                )
+            }
+        }
+    }
+}
+// Cette énumaration nous permettra d'implémenter la fonctionnalité share facilement
+enum ActiveSheet: Identifiable {
+    case pickImage
+    
+    var id: Int {
+        hashValue
     }
 }
 
