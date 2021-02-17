@@ -8,8 +8,6 @@
 import SwiftUI
 import UIKit
 
-// On crée le ImagePickerView à partir du UIImageViewController,
-// pour cela nous devons impllémenter le protocol UIViewControllerRepresentable
 struct ImagePickerView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIImagePickerController
     typealias SourceType = UIImagePickerController.SourceType
@@ -31,8 +29,6 @@ struct ImagePickerView: UIViewControllerRepresentable {
     }
 }
 
-// Le rôle du Coordinator est de nous permettre de donner un completionHandler,
-// pour donner des instruction après avoir choisi ou non une image
 final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let completionHandler: (UIImage?) -> Void
 

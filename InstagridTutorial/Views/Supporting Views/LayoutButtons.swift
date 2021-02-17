@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct LayoutButtons: View {
-    // On récupère le LayoutViewModel donné au InstagridTutorialApp
     @EnvironmentObject var layoutViewModel: LayoutViewModel
 
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
-    // Le property wrapper @State permet d'indiquer à cette vue de se mettre à jour,
-    // lorsque la valeur de cette propriété change
     @State var selectedFirstLayout = true
     @State var selectedSecondLayout = false
     @State var selectedThirdLayout = false

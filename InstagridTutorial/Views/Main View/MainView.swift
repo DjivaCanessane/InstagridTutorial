@@ -14,18 +14,21 @@ struct MainView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     @State var activeSheet: ActiveSheet?
+    @State var verticalOffset: CGFloat = CGFloat.zero
+    @State var horizontalOffset: CGFloat = CGFloat.zero
 
     let headerView = HeaderView()
     let layoutButtons = LayoutButtons()
 
     var body: some View {
+        // On donne un offset au gridLayout pour qu'il change de position lors du swipe
         let gridLayout = GridLayout(activeSheet: $activeSheet)
-        
+            .offset(x: horizontalOffset, y: verticalOffset)
         ZStack {
             Color.yellow
                 .edgesIgnoringSafeArea(.all)
             // Portrait mode
-            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+            if isPortraitMode() {
                 GeometryReader { geometry in
                     VStack {
                         headerView
@@ -63,9 +66,31 @@ struct MainView: View {
                 )
             }
         }
+        .gesture(DragGesture(minimumDistance: 3, coordinateSpace: .global)
+                    .onEnded({ (value) in
+                        // up swipe
+                        if value.translation.height < 0 && isPortraitMode() {
+                            // withAnimation créera automatiqument une animation pour la translation
+                            withAnimation {
+                                self.verticalOffset = -UIScreen.main.bounds.size.height
+                            }
+                        }
+                        // left swipe
+                        else if value.translation.width < 0 && !isPortraitMode() {
+                            // withAnimation créera automatiqument une animation pour la translation
+                            withAnimation {
+                                self.horizontalOffset = -UIScreen.main.bounds.size.width
+                            }
+                        }
+                    })
+        )
+    }
+
+    private func isPortraitMode() -> Bool {
+        return horizontalSizeClass == .compact && verticalSizeClass == .regular
     }
 }
-// Cette énumaration nous permettra d'implémenter la fonctionnalité share facilement
+
 enum ActiveSheet: Identifiable {
     case pickImage
     

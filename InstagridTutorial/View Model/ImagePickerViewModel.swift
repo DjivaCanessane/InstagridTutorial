@@ -16,7 +16,6 @@ class ImagePickerViewModel: ObservableObject {
     var sender: Sender = .topLeft
     private(set) var sourceType: ImagePickerView.SourceType = .photoLibrary
 
-    // CompletionHandler: affecte l'image choisi à sa case correspondante
     func didSelectImage(_ image: UIImage?) {
         switch sender {
         case .topLeft:
